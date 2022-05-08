@@ -839,7 +839,7 @@ def get_injected_code(mathjax_src, mathjax_tex_options):
     window.MathJax = {
       options: {
           skipHtmlTags: [
-              'script', 'noscript', 'style', 'textarea', 'pre',
+              'script', 'noscript', 'style', 'textarea',
               'code', 'annotation', 'annotation-xml'
           ],
           renderActions: {
