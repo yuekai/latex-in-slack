@@ -839,8 +839,8 @@ def get_injected_code(mathjax_src, mathjax_tex_options):
     window.MathJax = {
       options: {
           skipHtmlTags: [
-              'script', 'noscript', 'style', 'textarea', 'pre',
-              'code', 'annotation', 'annotation-xml'
+              'script', 'noscript', 'style', 'textarea',
+              'annotation', 'annotation-xml'
           ],
           renderActions: {
             assistiveMml: [], // Disable assitiveMML since we are not using it anywhere
