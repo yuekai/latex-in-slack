@@ -922,7 +922,7 @@ def get_injected_code(mathjax_src, mathjax_tex_options):
                   typeset(appearedEntries.map((entry) => entry.target));
               }
             },
-            { root: document.body }
+            { root: null }
           );
 
           // observer for elements are first inserted into the DOM.
