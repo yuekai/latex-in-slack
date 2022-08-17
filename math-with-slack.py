@@ -279,8 +279,8 @@ def macos_codesign_app(cert, workdir, app_path):
       stdout=subprocess.DEVNULL,
       stderr=subprocess.DEVNULL,
   )
-  with open(entitlements_path, "r+") as f:
-    is_der_file = "[Dict]" in f.readline()
+  with open(entitlements_path, "rb+") as f:
+    is_der_file = b"[Dict]" in f.readline()
     if is_der_file:
       # `codesign` produced a DER file, so scratch that and regenerate with `--xml`.
       f.truncate(0)
@@ -1037,7 +1037,7 @@ def macos_do_or_warn_codesign(do_codesign, workdir, app_path):
     try:
       macos_codesign_setup(cert, workdir)
       macos_codesign_app(cert, workdir, app_path)
-    except:
+    except Exception:
       print("Warning: code signing failed. " + codesign_msg)
   else:
     print("Caveat!!!")
