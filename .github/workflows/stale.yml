@@ -22,7 +22,8 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 90
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
+        stale-issue-message: 'Inactive for more than 90 days. Closing for now.'
+        stale-pr-message: 'Inactive for more than 90 days. Closing for now.'
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
+        exempt-issue-labels: 'question,help wanted,enhancement'
