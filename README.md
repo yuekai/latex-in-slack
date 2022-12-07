@@ -1,6 +1,5 @@
 ![CI](https://github.com/thisiscam/math-with-slack/workflows/CI/badge.svg)
 
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-3.6.json)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/macOS-3.6.json)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/windows-3.6.json)
 <details>
