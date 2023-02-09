@@ -136,6 +136,31 @@ You should use the version downloaded from [Slack's website](https://slack.com/d
 `math-with-slack`. The script should, however, work with most package managers if 
 [you manage to grant the script write permission](https://github.com/fsavje/math-with-slack/issues/32#issuecomment-479852799).
 
+#### NixOS
+
+To patch Slack when installing it on [NixOS](https://nixos.org/), use for example the following configuration:
+
+``` nix
+{ pkgs, ... }:
+
+let
+  math-with-slack.py = builtins.fetchurl {
+    url = "https://github.com/thisiscam/math-with-slack/blob/master/math-with-slack.py/?raw=True";
+    name = "math-with-slack.py";
+  };
+  mathjax.tgz = builtins.fetchurl "https://registry.npmjs.org/mathjax/-/mathjax-3.1.0.tgz";
+  slack = pkgs.slack.overrideAttrs (old: {
+    installPhase = old.installPhase + ''
+      ${pkgs.python311}/bin/python ${math-with-slack.py} --mathjax-url=${mathjax.tgz} -a $out/lib/slack/resources/app.asar
+    '';
+  });
+in {
+  environment.systemPackages = [
+    slack
+  ];
+}
+```
+
 
 ### MathJax versions and URLs
 
