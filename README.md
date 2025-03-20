@@ -1,46 +1,6 @@
-![CI](https://github.com/thisiscam/math-with-slack/workflows/CI/badge.svg)
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-3.7.json)
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/macOS-3.6.json)
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/windows-3.6.json)
-<details>
-<summary>
-Expand to see all tested systems
-</summary>
-<p>
-
-# All environments on latest Slack app (updated nightly)
-
-Environments below with passing badges are tested to work -- that the install scripts completes succesfully.  
-However, if you find that something is not working (e.g. math rendering does not appear), please file an [issue](../../issues) with your environment! 
-
-### Ubuntu
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-3.7.json)
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-3.8.json)
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-3.9.json)
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/ubuntu-pypy-3.7.json)
-
-
-### MacOS
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/macOS-3.6.json)
-
-
-### Windows
-
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thisiscam/02c2a5208be4374a6d0eab50ebb8e021/raw/windows-3.6.json)
-
-</p>
-</details>
-
-
 # Rendered math (MathJax) with Slack's desktop client
 
-[Slack](https://slack.com) does not display rendered math. The `math-with-slack` script allows you to write nice-looking math using familiar TeX syntax by injecting [MathJax](https://www.mathjax.org) into Slack's desktop client. This approach has several advantages over the plugin/bot solution:
+[Slack](https://slack.com) does not display rendered math. The `latex-in-slack` script allows you to write nice-looking math using familiar TeX syntax by injecting [MathJax](https://www.mathjax.org) into Slack's desktop client. This approach has several advantages over the plugin/bot solution:
 
   * You can write both inline- and display-style equations.
   * You can edit equations after you've posted them.
@@ -63,27 +23,27 @@ Windows users without Python installed can skip and jump to [binary release](#be
 #### Option 1: Raw script content
 
 There are many ways to get the script. 
-This [link to math-with-slack.py](math-with-slack.py/?raw=True) should take you to the raw file content of the script, with the version relative same as README.md that you are looking at (i.e. on the same commit).
-From there you can simply save the file's content to a local file `math-with-slack.py` (e.g. you can copy the entire content, and use your favorite editor to save the content) --- this process should be the same for all platforms, and works as long as you have a decent browser and working editor.
+This [link to latex-in-slack.py](latex-in-slack.py/?raw=True) should take you to the raw file content of the script, with the version relative same as README.md that you are looking at (i.e. on the same commit).
+From there you can simply save the file's content to a local file `latex-in-slack.py` (e.g. you can copy the entire content, and use your favorite editor to save the content) --- this process should be the same for all platforms, and works as long as you have a decent browser and working editor.
 
 
 #### Option 2: using a download tool (e.g. curl, wget) 
 
-1. Copy the URL of [link to math-with-slack.py](math-with-slack.py/?raw=True) (e.g. right click on the link -> copy URL).
+1. Copy the URL of [link to latex-in-slack.py](latex-in-slack.py/?raw=True) (e.g. right click on the link -> copy URL).
 
 2. Assuming on Mac and/or Linux, use one of the alternatives:
   - With the tool `curl` available. Run the following in a terminal:
   ```shell
-  curl -L {PASTE_THE_COPIED_LINK_HERE} > math-with-slack.py
+  curl -L {PASTE_THE_COPIED_LINK_HERE} > latex-in-slack.py
   ```
   - With the tool `wget` available. Run the following in a terminal:
   ```
-  wget {PASTE_THE_COPIED_LINK_HERE} -O math-with-slack.py
+  wget {PASTE_THE_COPIED_LINK_HERE} -O latex-in-slack.py
   ```
 
 #### Option 3: using git
 
-With `git` available, you can also clone this repo, and access the script `math-with-slack.py` directly!
+With `git` available, you can also clone this repo, and access the script `latex-in-slack.py` directly!
 
 
 ### Running the script
@@ -91,16 +51,16 @@ With `git` available, you can also clone this repo, and access the script `math-
 - MacOS and Linux
 
  ```shell
- cd path/to/math-with-slack
- sudo python math-with-slack.py 
+ cd path/to/latex-in-slack
+ sudo python latex-in-slack.py 
  ```
  The installation should take effect after restarting Slack.
  
 - Windows
  You need to exit your Slack before the installation.
  ```shell
- cd path\to\math-with-slack
- python math-with-slack.py
+ cd path\to\latex-in-slack
+ python latex-in-slack.py
  ```
 
 ### Beta Binary Release for Windows
@@ -112,7 +72,7 @@ We have also included pre-built executables for Windows in case Python is not av
 If multiple versions of Slack are found on your computer, you will be asked to select one from them.
    
    ```
-   python math-with-slack.py
+   python latex-in-slack.py
    Several versions of Slack were installed.
     0: /mnt/c/Users/***/AppData/Local/slack/app-4.9.0/resources/app.asar (default)
     1: /mnt/c/Users/***/AppData/Local/slack/app-4.8.0/resources/app.asar
@@ -123,17 +83,17 @@ If multiple versions of Slack are found on your computer, you will be asked to s
    or type Enter to select the first one.
    
    **Currently, we only support Slack installed from [Slack installer](https://slack.com/downloads/windows).
-   If your Slack is installed through Microsoft Store, `math-with-slack` is not able to modifiy files in `WindowsApps`
+   If your Slack is installed through Microsoft Store, `latex-in-slack` is not able to modifiy files in `WindowsApps`
    folder hence not able to embedded our script.**
 
 
 ### Package and software managers
 
 The script needs write permissions in the Slack directory in order to inject the MathJax code. 
-Some package and software managers write protect their directories, and `math-with-slack` cannot be installed 
+Some package and software managers write protect their directories, and `latex-in-slack` cannot be installed 
 if Slack is installed through such a manager. This is the case for both the Windows Store and Snap versions of Slack. 
 You should use the version downloaded from [Slack's website](https://slack.com/downloads/windows) if you want to use 
-`math-with-slack`. The script should, however, work with most package managers if 
+`latex-in-slack`. The script should, however, work with most package managers if 
 [you manage to grant the script write permission](https://github.com/fsavje/math-with-slack/issues/32#issuecomment-479852799).
 
 #### NixOS
@@ -144,14 +104,14 @@ To patch Slack when installing it on [NixOS](https://nixos.org/), use for exampl
 { pkgs, ... }:
 
 let
-  math-with-slack.py = builtins.fetchurl {
-    url = "https://github.com/thisiscam/math-with-slack/blob/master/math-with-slack.py/?raw=True";
-    name = "math-with-slack.py";
+  latex-in-slack.py = builtins.fetchurl {
+    url = "https://github.com/yuekai/latex-in-slack/blob/master/latex-in-slack.py/?raw=True";
+    name = "latex-in-slack.py";
   };
   mathjax.tgz = builtins.fetchurl "https://registry.npmjs.org/mathjax/-/mathjax-3.1.0.tgz";
   slack = pkgs.slack.overrideAttrs (old: {
     installPhase = old.installPhase + ''
-      ${pkgs.python311}/bin/python ${math-with-slack.py} --mathjax-url=${mathjax.tgz} -a $out/lib/slack/resources/app.asar
+      ${pkgs.python311}/bin/python ${latex-in-slack.py} --mathjax-url=${mathjax.tgz} -a $out/lib/slack/resources/app.asar
     '';
   });
 in {
@@ -179,11 +139,11 @@ of versions that we have tested and the corresponding URLs.
 
 
 Some URLs works better for certain areas. You can use any URL in the
-table to install `math-with-slack`.
+table to install `latex-in-slack`.
 
    ```shell
-   cd path\to\math-with-slack
-   python math-with-slack.py --mathjax-url=https://r.cnpmjs.org/mathjax/-/mathjax-3.0.5.tgz
+   cd path\to\latex-in-slack
+   python latex-in-slack.py --mathjax-url=https://r.cnpmjs.org/mathjax/-/mathjax-3.0.5.tgz
    ```
 
 
@@ -192,7 +152,7 @@ table to install `math-with-slack`.
 To uninstall, run the script again with the `-u` flag:
 
 ```shell
-python math-with-slack.py -u
+python latex-in-slack.py -u
 ```
 
 
@@ -209,11 +169,11 @@ might find the wrong installation. In such cases, you need to specify the locati
 `app.asar` file as a parameter:
 
 ```shell
-python math-with-slack.py --app-file=/My_Apps/Slack.app/Contents/Resources/app.asar
+python latex-in-slack.py --app-file=/My_Apps/Slack.app/Contents/Resources/app.asar
 ```
 
 ```shell
-python math-with-slack.py --app-file=c:/Users/yourusername/AppData/Local/slack/app-4.7.0/resources/app.asar
+python latex-in-slack.py --app-file=c:/Users/yourusername/AppData/Local/slack/app-4.7.0/resources/app.asar
 ```
 
 ### Double underscore converts to italic
@@ -239,7 +199,7 @@ The script allows one to customize MathJax at installation time.
 Currently the script allows the user to supply an optional [TeX input processor option](http://docs.mathjax.org/en/latest/options/input/tex.html) to customize the MathJax rendering. 
 For example, to instead use `\( ... \)` for inline math and `\[ ... \]` for display-style math, and enable the package [physics](http://docs.mathjax.org/en/latest/input/tex/extensions/physics.html?highlight=physics) support, one may use the following command line arguments during installation:
 ```shell
-python math-with-slack.py --mathjax-tex-options="{\
+python latex-in-slack.py --mathjax-tex-options="{\
   packages: {'[+]': ['noerrors', 'noundefined', 'physics']}, \
   inlineMath: [['\\\(', '\\\\)']], \
   displayMath: [['\\\\[', '\\\\]']], \

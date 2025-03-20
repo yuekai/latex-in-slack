@@ -1,3 +1,8 @@
+# latex-in-slack 0.4.3
+
+  * Changed name to `latex-in-slack.py`. 
+  * Replace/update depreciated packages and signatures
+
 # math-with-slack 0.4.2
 
   * Added support to select and copy-paste rendered TeX. Currently selection highlight is not available, but copying works. 

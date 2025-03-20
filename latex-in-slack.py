@@ -40,7 +40,7 @@ import struct
 import functools
 import hashlib
 
-from distutils.version import LooseVersion
+from packaging import version
 
 try:
   # Python 3
@@ -736,7 +736,7 @@ def resolve_app_path(app_path):
 
 def get_files_need_modification(app_path, slack_version):
   ret = [app_path]
-  if get_platform() == "darwin" and slack_version >= LooseVersion("4.22"):
+  if get_platform() == "darwin" and slack_version >= version.parse("4.22"):
     ret += macos_get_plists(app_path)
   return ret
 
@@ -757,12 +757,12 @@ def extract_asar(tmp_dir, app_path):
 
 def read_slack_version(asar_extracted_dir):
   with open(os.path.join(asar_extracted_dir, "package.json"), "r") as f:
-    return LooseVersion(json.load(f)["version"])
+    return version.parse(json.load(f)["version"])
 
 
 def check_slack_version(asar_extracted_dir):
   slack_version = read_slack_version(asar_extracted_dir)
-  if slack_version <= LooseVersion('4.4'):
+  if slack_version <= version.parse('4.4'):
     exprint("Unsupported Slack Version {}.".format(slack_version))
 
 
@@ -811,7 +811,13 @@ def download_mathjax(mathjax_url):
         mathjax_url, [], get_reporthook())
   mathjax_tmp_dir = tempfile.mkdtemp()
   mathjax_tar = tarfile.open(mathjax_tar_name)
-  mathjax_tar.extractall(path=mathjax_tmp_dir)
+  # Handle different Python versions
+  if sys.version_info >= (3, 12):
+    # Use the filter parameter for Python 3.12+ to address the warning
+    mathjax_tar.extractall(path=mathjax_tmp_dir, filter='data')
+  else:
+    # Older Python versions don't support the filter parameter
+    mathjax_tar.extractall(path=mathjax_tmp_dir)
   mathjax_tar.close()
   mathjax_dir = os.path.join(mathjax_tmp_dir, "package")
   mathjax_src_path = os.path.join(mathjax_dir, "es5/tex-svg-full.js")
@@ -1103,7 +1109,7 @@ def main():
   new_asar_hash = asar_packer.pack(asar_extracted_dir, app_path,
                                    asar_extractor.get_unpackeds())
 
-  if platform == "darwin" and slack_version >= LooseVersion("4.22"):
+  if platform == "darwin" and slack_version >= version.parse("4.22"):
     macos_update_plists(app_path, new_asar_hash)
     macos_do_or_warn_codesign(args.macos_codesign, tmp_dir, app_path)
 
