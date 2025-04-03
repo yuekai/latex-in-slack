@@ -63,10 +63,6 @@ With `git` available, you can also clone this repo, and access the script `latex
  python latex-in-slack.py
  ```
 
-### Beta Binary Release for Windows
-
-We have also included pre-built executables for Windows in case Python is not available. Please see our [Releases page](../../releases) for more details.
-
 ### Selecting a Slack version
 
 If multiple versions of Slack are found on your computer, you will be asked to select one from them.
